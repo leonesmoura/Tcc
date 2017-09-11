@@ -1,0 +1,348 @@
+ifconfig
+sudo apt-get install wpa_supplicant
+nano /etc/network/interfaces
+service networking restart
+ifconfig
+reboot
+sudo apt-get update
+sudo apt-get upgrade
+ifconfig
+armbian-config
+ping 8.8.8.8
+apt upgrade
+apt update
+apt list --upgradable
+cd /etc
+apt
+cd apt
+ls
+echo "deb http://apt.armbian.com $(lsb_release -cs) main utils $(lsb_release -cs)-desktop" > /etc/apt/sources.list.d/armbian.list
+apt-key adv --keyserver keys.gnupg.net --recv-keys 0x93D6889F9F0E78D5
+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 0x93D6889F9F0E78D5
+apt-get update
+ping www.google.com
+nano /etc/network/interfaces
+reboot
+ifconfig
+ifconfig
+ping www.google.com
+apt-get update
+sudo apt-get upgrade
+nano /etc/network/interfaces
+nano /etc/network/interfaces
+sudo apt-get node
+sudo apt-get install npm
+sudo apt-get install nodejs
+node -v
+npm -v
+apt list nodejs
+node -v
+sudo npm install npm@latest -g
+sudo apt-get install nodejs
+node -v
+sudo npm cache clean -f
+sudo npm cache clean -f
+sudo npm cache clean -f
+curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+sudo apt-get install nodejs
+node -v
+armbianmonitor -m
+armbianmonitor -m
+cd /tcc
+cd tcc
+ls
+cd TCC
+python -m SimpleHTTPServer
+node server.js
+sudo npm install express --save
+node server.js
+sudo npm install request
+node server.js
+armbianmonitor -m
+shutdown now
+htop
+cd /tcc
+cd TCC
+ls
+node server.js
+node server.js
+node server.js
+node server.js
+reboot
+reboot
+ping google.com
+armbianmonitor -m
+armbian-config
+sudo apt-get install nmap
+nmap -sP 10.0.0.0/24
+nmap -sP 10.0.0.0/24
+shutdown now
+node server.js
+cd tcc
+cd TCC
+node server.js
+wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz
+tar xzf noip-duc-linux.tar.gz
+cd noip-2.1.9-1/
+ls
+make
+make install
+ping google.com
+cd ..
+python -m SimpleHTTPServer
+apt-get install lynx
+lynx http://www.meuip.com.br/
+history
+python -m SimpleHTTPServer
+python -m SimpleHTTPServer -p 80
+python -m SimpleHTTPServer 80
+python -m SimpleHTTPServer
+cd TCC
+node server.js
+node server.js
+node server.js
+node server.js
+node server.js
+node server.js
+sudo apt-get install motion
+motion -v
+noip2
+tar xzf noip-duc-linux.tar.gz 
+ls
+cd noip-2.1.9-1/
+make
+make install
+noip2
+ping domoticaleones.hopto.org
+noip2 -h
+noip2 -C
+kill 1653
+noip2 -C
+noip2
+ping domoticaleones.hopto.org
+tracert domoticaleones.hopto.org
+trace domoticaleones.hopto.org
+traceroute  domoticaleones.hopto.org
+python -m SimpleHTTPServer
+cd ..
+cd TCC/
+python -m SimpleHTTPServer
+python -m SimpleHTTPServer 22
+python -m SimpleHTTPServer 80
+python -m SimpleHTTPServer 22
+python -m SimpleHTTPServer 
+shutdown
+shutdown now
+ccd TCC
+cd TCC
+node server.js
+node server.js
+cd TCC
+node server.js
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+tail -n50 /var/log/syslog
+sudo service motion stop
+sudo service motion start
+tail -n50 /var/log/syslog
+sudo service motion stop
+sudo service motion start
+sudo service motion restart
+sudo service motion start
+tail -n50 /var/log/syslog
+sudo apt-get remove libavcodec-extra-56 libavformat56 libavresample2 libavutil54
+wget https://github.com/ccrisan/motioneye/wiki/precompiled/ffmpeg_3.1.1-1_armhf.deb
+sudo dpkg -i ffmpeg_3.1.1-1_armhf.deb
+sudo apt-get install curl libssl-dev libcurl4-openssl-dev libjpeg-dev libx264-142 libavcodec56 libavformat56 libmysqlclient18 libswscale3 libpq5
+wget https://github.com/Motion-Project/motion/releases/download/release-4.0.1/pi_jessie_motion_4.0.1-1_armhf.deb
+sudo dpkg -i pi_jessie_motion_4.0.1-1_armhf.deb
+sudo nano /etc/motion/motion.conf
+sudo nano /etc/motion/motion.conf
+sudo nano /etc/motion/motion.conf
+sudo nano /etc/default/motion
+sudo service motion start
+sudo service motion restart
+sudo service motion stop
+sudo service motion start
+tail -n50 /var/log/syslog
+sudo service motion restart
+sudo service motion start
+sudo service motion start
+sudo service motion stop
+
+tail -n50 /var/log/syslog
+sudo service motion start
+tail -n50 /var/log/syslog
+motion
+service motion
+service motion status
+service motion status
+service motion reload
+service motion stop
+service motion status
+sudo service motion start
+service motion stop
+sudo service motion start
+service motion stop
+sudo service motion start
+service motion status
+sudo apt-get install motion
+sudo apt-get autoremove motion
+sudo apt-get install motion
+sudo service motion start
+sudo apt-get install libv4l
+wget http://ftp.us.debian.org/debian/pool/main/v/v4l-utils/libv4l-0_1.6.0-2_armhf.deb
+sudo dpkg -i libv4l-0_1.6.0-2_armhf.deb 
+sudo apt-get install libv4lconvert0
+apt-get -f install
+sudo service motion stop
+LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libv4l/v4l1compat.so motion -n
+LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libv4l/v4l1compat.so motion -n
+LD_PRELOAD=/usr/lib/libv4l/v4l2convert.so motion
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+sudo service motion start
+cd TCC
+python -m SimpleHTTPServer
+python -m SimpleHTTPServer
+hop
+htop
+armbianmonitor -m
+history
+armbianmonitor -m
+sudo service motion stop
+armbianmonitor -m
+cd TCC
+sudo service motion start
+python -m SimpleHTTPServer
+node server.js
+cd no
+cd TCC
+node server.js
+sudo service motion stop
+python -m SimpleHTTPServer
+cd tcc
+cd TCC
+python -m SimpleHTTPServer
+node server.js
+armbianmonitor -m
+armbianmonitor -m
+date 082700312017
+armbianmonitor -m
+armbianmonitor -m
+date 082700312017
+shutdown now
+cd TCC
+node server.js
+node server.js
+node server.js
+sudo service motion stop
+shutdown now
+cd TCC
+node server.js
+node server.js
+cd TCC
+node server.js
+sudo service motion stop
+sudo service motion start
+sudo service motion stop
+node server.js
+node server.js
+python -m SimpleHTTPServer
+armbianmonitor -m
+python -m SimpleHTTPServer
+python -m SimpleHTTPServer
+sudo service motion start
+python -m SimpleHTTPServer
+sudo service motion stop
+shutdown now
+cd TCC
+node server.js
+python -m SimpleHTTPServer
+shutdown now
+cd TCC
+node server.js
+node server.js
+sudo service motion stop
+armbianmonitor -m
+node server.js
+node server.js
+node server.js
+cd TCC
+node server.js
+shutdown now
+cd TCC
+node server.js
+node server.js
+sudo service motion stop
+sudo service motion start
+node server.js
+node server.js
+armbianmonitor -m
+shutdown now
+cd TCC
+node server.js
+sudo service motion start
+node server.js
+shutdown now
+aptitude install ntpdate
+ntpdate -u 200.20.186.75
+ntpdate -u 200.20.186.75
+ntpdate -u ntp.usp.br
+1
+ntpdate -u ntp.usp.br
+ntpdate -u ntp.usp.br
+ntpdate -u 200.20.186.75
+1
+ntpdate -u 200.20.186.75
+ntpdate pool.ntp.org
+1
+ntpdate pool.ntp.org
+ntpdate pool.ntp.org
+htop
+ntpdate pool.ntp.org
+sudo ntpdate pool.ntp.org
+ntpdate -u 200.20.186.75
+sudo apt-get install ntpdate
+ntpdate -u 200.20.186.75
+history
+date 082700312017
+date 091119392017
+crontab -l
+curl 10.0.0.51/lq2
+curl 10.0.0.51/lq2
+date
+crontab -e
