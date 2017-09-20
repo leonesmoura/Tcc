@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head> <!-- Cabeçalho -->
+    <title>Domótica ::: UFS</title> <!--Define título da página, exibido no navegador-->
+    <meta charset="utf-8"><!--Atribui acentuação da gramática portuguesa-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="css/estilo.css" media="screen" charset="utf-8"> <!--Caminho para o código em CSS-->
+	<script type="text/javascript" src="js/script.js"></script> <!--Caminho para partes do código JS-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	<!-- Importação da biblioteca JQuery -->
+</head> 
+<body> <!-- Corpo da página -->
+  
+	<header>
+		<h2>Domótica</h2> <!-- Texto exibido no início da página -->
+	</header>
+  	<div class="main"> <!-- Criação de uma divisão da página onde será exposto a imagem da planta do apartamento, criação da classe main para modificar no css-->
+		<div id="planta-baixa"> <!-- Define o nome da variável para ser editada no CSS-->
+			<img src="images/planta-baixa.png" /> <!-- Caminho da imagem-->
+		</div>
+	<div id="comodos"><!-- Criação de uma divisão para os comodos-->
+				<table class="tabela" border="0px" border-color="#fff">	<!-- criação de um tabela para colocar cada comodo e os botões -->
+					<tr > <!-- primeira célula da tabela -->
+					<td class="painel"> Sala  		<!-- texto -->
+						<img src="images/fundo.png" /> <!-- Imagem de fundo-->
+						<p id="Sala">
+							<input id="lampadasala1" type="image" value="0" border="0" alt="lampadasala1" src="images/lampada-off.png"/> <!-- Botão de lâmpada com imagem-->
+						
+							<input id="lampadasala2" type="image" onclick="acender(this)" value="0" border="0" alt="lampadasala2" src="images/lampada-off.png" /> <!-- Botão de lâmpada com imagem-->
+
+							<input id="camera" type="image" onclick="popcamera(this)"  border="0" alt="camera" src="images/camera.png" /> <!-- Botão para abrir um popup com as imagem da camera -->
+
+							<input id="multimidia1" type="image" onclick="abrirIR1(this)" border="0" alt="tv" src="images/tv.png"/><!-- Botão para abrir um popup com o controle remoto virtual --> 
+
+																<script> //código JavaScript para botões da sala
+																$(document).ready(function(){ 
+
+																	$("#lampadasala1").click(function(){ //função para quando o botão é clicado
+																	    $.get("http://10.0.0.55/ls1", function(data, status){ //HTTP get no host 2 caminho /ls1
+																	        dado = data; //pega a mensagem respondida do GET
+																	        console.log(dado); //exibe no console da inspeção do navegador
+																	    
+																	    if(dado=='0'){ //se a resposta for 0, trocar a imagem do botão para apagada
+																	    	$("#lampadasala1").attr({'src' : "images/lampada-off.png"});
+																	    }else{// se não trocar a imagem para acessa
+																	    	$("#lampadasala1").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+																$(document).ready(function(){//Mesma função anterior, modificando apenas o link do HTTP GET
+
+																	$("#lampadasala2").click(function(){
+																	    $.get("http://10.0.0.51/ls2", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#lampadasala2").attr({'src' : "images/lampada-off.png"});
+																	    }else{
+																	    	$("#lampadasala2").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+																</script>
+
+						</p>
+					</td>
+				</tr>
+				
+				<tr id="cozinha"> <!-- Segunda linha da tabela -->
+					<td class="painel"> Cozinha <!--Criação do comodo da cozinha-->
+						<img src="images/fundo.png" /> <!-- Imagem de fundo -->
+						<p>
+							<input id="lampadaC" type="image" value="0" border="0" alt="lampadac" src="images/lampada-off.png"/>
+							
+							<input type="image" border="0" src="images/transparente.png" /><!--Botão transparente para fixa proporção em todos os botões-->
+													
+							<input id="gas" type="image" onclick="" border="0" alt="gas" src="images/gas.png"/> <!--Imagen gás-->
+											<p id="texto" class="texto">0%</p> <!--Texto para exibir valor do sensor de gás-->
+
+															<script> //JS dos botões desse comodo 
+																	$(document).ready(function(){
+
+																	$("#lampadaC").click(function(){ 
+																	    $.get("http://10.0.0.65/lc", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#lampadaC").attr({'src' : "images/lampada-off.png"});
+																	    }else{
+																	    	$("#lampadaC").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+
+																										$(function(){
+																										var string;//cria variável string
+
+																										setInterval(function(){ //função que roda a cada 3000ms 
+																											  $.get("http://10.0.0.65/sg", function(data, status){//get para obter valor o sensor de gás
+																												        string = data; // string recebe valor
+																												        console.log(string);
+																												   	$('.texto').html(string + "%"); 	//exibe na página esse valor
+																										    		if(data > '60' || data === '100'){ //se for maior que 60 ou igual a 100
+																										    		$("#gas").attr({'src' : "images/gas2.png"});//mostra imagem do gás apagada
+																										    		}else{//se não
+																										    		$("#gas").attr({'src' : "images/gas.png"});//ALERTA DE GÁS
+																											   		 }
+																										  																										    
+																												});																																	    
+																																																		  
+																										}, 3000);
+																												});
+														  	</script>
+				</p>
+
+					</td>
+				</tr>
+
+
+					<tr id="suite">
+					<td class="painel"> Suíte
+						<img src="images/fundo.png" />
+						<p>
+							<input id="lampadaST" type="image"  border="0" alt="lampadas1" src="images/lampada-off.png"/>
+
+							<input id="tomadaST" type="image" border="0" alt="tomadas" src="images/tomadaon.png" />
+														
+							<input id="multimidia2" type="image" onclick="abrirIR2(this)" border="0" alt="tv" src="images/tv.png"/>
+														<script>
+																$(document).ready(function(){
+
+																	$("#lampadaST").click(function(){
+																	    $.get("http://10.0.0.70/lst", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#lampadaST").attr({'src' : "images/lampada-off.png"});
+																	    }else{
+																	    	$("#lampadaST").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+																$(document).ready(function(){
+
+																	$("#tomadaST").click(function(){
+																	    $.get("http://10.0.0.60/tst", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#tomadaST").attr({'src' : "images/tomada-off.png"});
+																	    }else{
+																	    	$("#tomadaST").attr({'src' : "images/tomada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+
+																</script>
+							
+						</p>
+					</td>
+				</tr>
+
+
+				<tr id="quarto1">
+					<td class="painel"> Quarto 1
+						<img src="images/fundo.png" />
+						<p>
+							<input id="lampadaquarto1" type="image" value="0" border="0" alt="lampadaq1" src="images/lampada-off.png"/>
+							
+
+
+
+							<input type="image" border="0" src="images/transparente.png" />
+
+							<input id="tomadaquarto1" type="image"  border="0" alt="tomadaq1" src="images/tomadaon.png" />
+
+																<script>
+																$(document).ready(function(){
+
+																	$("#lampadaquarto1").click(function(){
+																	    $.get("http://10.0.0.51/lq1", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#lampadaquarto1").attr({'src' : "images/lampada-off.png"});
+																	    }else{
+																	    	$("#lampadaquarto1").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+																$(document).ready(function(){
+
+																	$("#tomadaquarto1").click(function(){
+																	    $.get("http://10.0.0.60/tq1", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#tomadaquarto1").attr({'src' : "images/tomada-off.png"});
+																	    }else{
+																	    	$("#tomadaquarto1").attr({'src' : "images/tomada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+
+																</script>
+						</p>
+					</td>
+				</tr>
+
+
+				<tr id="quarto2">
+					<td class="painel"> Quarto 2
+						<img src="images/fundo.png" />
+						<p>
+							<input id="lampadaquarto2" type="image" border="0" alt="lampadaq2" src="images/lampada-off.png"/>
+									
+							<input type="image" border="0" src="images/transparente.png" />
+							<input id="tomadaquarto2" type="image" onclick="ligartomada(this)" value="1" border="0" alt="tomadaq2" src="images/tomadaon.png" />
+																<script>
+																$(document).ready(function(){
+
+																	$("#lampadaquarto2").click(function(){
+																	    $.get("http://10.0.0.51/lq2", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#lampadaquarto2").attr({'src' : "images/lampada-off.png"});
+																	    }else{
+																	    	$("#lampadaquarto2").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+																$(document).ready(function(){
+
+																	$("#tomadaquarto2").click(function(){
+																	    $.get("http://10.0.0.60/tq2", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#tomadaquarto2").attr({'src' : "images/tomada-off.png"});
+																	    }else{
+																	    	$("#tomadaquarto2").attr({'src' : "images/tomada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+
+																</script>
+							
+						</p>
+					</td>
+				</tr>
+
+
+
+
+
+								<tr id="areaservico">
+					<td class="painel"> Area de Serviço
+						<img src="images/fundo.png" />
+						<p>
+							<input id="lampadaAS" type="image" border="0" alt="lampadaas" src="images/lampada-off.png"/>
+							
+							<input type="image" border="0" src="images/transparente.png" />
+							
+							<input id="valvula" type="image" class="switch" value="0" border="0" alt="interruptorwc" src="images/switch-off.png"  />
+							
+																<script>
+																$(document).ready(function(){
+
+																	$("#lampadaAS").click(function(){
+																	    $.get("http://10.0.0.65/las", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#lampadaAS").attr({'src' : "images/lampada-off.png"});
+																	    }else{
+																	    	$("#lampadaAS").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+
+																    $(document).ready(function(){
+
+																	$("#valvula").mousedown(function(){ //se clicado (somente enquanto o botão é clicado)
+																	    	$.get("http://10.0.0.65/val", function(data, status){//http get para ligar válvula
+																	   
+																	    	
+																	    
+																	    
+																	});
+																	    	$("#valvula").attr({'src' : "images/switch-on.png"});//imagem de válvula ligada
+																	});
+																	});
+
+																	$(document).ready(function(){
+
+																	$("#valvula").mouseup(function(){//quando o clique é solto do botão
+																	    
+																	   
+																	    	$("#valvula").attr({'src' : "images/switch-off.png"});//Volta a imagem da valvula desligada
+																	
+																	    
+																	
+																	});
+																	});
+															
+
+																</script>
+							
+						</p>
+					</td>
+				</tr>
+
+
+
+
+
+
+				<tr id="banheiro">
+					<td class="painel"> Banheiro
+						<img src="images/fundo.png" />
+						<p>
+							
+							<input type="image" border="0" src="images/transparente.png" />
+							<input id="lampadaB" type="image" value="0" border="0" alt="lampadawc1" src="images/lampada-off.png"/>
+							<input type="image" border="0" src="images/transparente.png" />
+														
+							
+						</p>
+					</td>
+				</tr>
+																<script>
+																$(document).ready(function(){
+
+																	$("#lampadaB").click(function(){
+																	    $.get("http://10.0.0.70/lb", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#lampadaB").attr({'src' : "images/lampada-off.png"});
+																	    }else{
+																	    	$("#lampadaB").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+
+																</script>
+
+
+
+				<tr id="varanda">
+					<td class="painel"> Varanda
+						<img src="images/fundo.png" />
+						<p>
+							<input type="image" border="0" src="images/transparente.png" />
+							<input id="lampadavaranda" type="image" border="0" alt="lampadavar" src="images/lampada-off.png"/>
+							<input type="image" border="0" src="images/transparente.png" />
+
+																<script>
+																$(document).ready(function(){
+
+																	$("#lampadavaranda").click(function(){
+																	    $.get("http://10.0.0.55/lv", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	    
+																	    if(dado=='0'){
+																	    	$("#lampadavaranda").attr({'src' : "images/lampada-off.png"});
+																	    }else{
+																	    	$("#lampadavaranda").attr({'src' : "images/lampada-on.png"});
+																	    }
+																	    
+																	});
+																	});
+																	});
+
+																</script>
+
+
+							
+						</p>
+					</td>
+				</tr>
+				
+				
+			</table>
+			
+			
+		</div>
+		
+	</div>
+
+
+
+			<div id="cam" class="popup"> <!-- POPup da câmera-->
+			<img style="-webkit-user-select: none;" src="http://10.0.0.100:8081/"> <!--Exibe a imagem da cãmera disponível por esse http get -->
+					
+					<button id="fecharpop" type="button" onclick="fecharpop(this)"> X </button> <!-- Botão pra fechar o pop up -->
+			</div>
+
+
+
+
+  
+			<div id="IR1" class="popup"> <!-- POPup do controle ir da sala-->
+						<button id="fecharIR1" type="button" onclick="fecharIR1(this)"> X </button> <!-- BOtão de fechar -->
+						<input id=onoff type="image" border="0" alt="onoff" src="images/OFF.png"/> <!-- botão ligar e desligar-->
+
+																<script>
+																$(document).ready(function(){
+
+																	$("#onoff").click(function(){ //HTTP Get para emissão do sinal
+																	    $.get("http://10.0.0.55/power", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});    
+
+																	$(document).ready(function(){
+
+																	$("#CHP").click(function(){
+																	    $.get("http://10.0.0.55/ch+", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+
+																	$(document).ready(function(){
+
+																	$("#CHN").click(function(){
+																	    $.get("http://10.0.0.55/ch-", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+
+																	$(document).ready(function(){
+
+																	$("#VP").click(function(){
+																	    $.get("http://10.0.0.55/v+", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+
+																	$(document).ready(function(){
+
+																	$("#VN").click(function(){
+																	    $.get("http://10.0.0.55/v-", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#SORCE").click(function(){
+																	    $.get("http://10.0.0.55/sorce", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#UP").click(function(){
+																	    $.get("http://10.0.0.55/up", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#LEFT").click(function(){
+																	    $.get("http://10.0.0.55/left", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#RIGHT").click(function(){
+																	    $.get("http://10.0.0.55/right", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#DOWN").click(function(){
+																	    $.get("http://10.0.0.55/down", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#OK").click(function(){
+																	    $.get("http://10.0.0.55/ok", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	</script>
+					
+
+						<input id=CHP type="image" border="0" alt="UP" src="images/CH+.png"/>
+						<input id=CHN type="image" border="0" alt="UP" src="images/CH-.png"/>
+						<input id=VP type="image" border="0" alt="UP" src="images/V+.png"/>
+						<input id=VN type="image" border="0" alt="UP" src="images/V-.png"/>
+
+						<input id=SORCE type="image" border="0" alt="SORCE" src="images/SORCE.png"/>
+
+						<input id=UP type="image" border="0" alt="UP" src="images/UP.png"/>
+						<input id=DOWN type="image" border="0" alt="UP" src="images/DOWN.png"/>
+						<input id=OK type="image" border="0" alt="UP" src="images/OK.png"/>
+						<input id=LEFT type="image" border="0" alt="UP" src="images/LEFT.png"/>
+						<input id=RIGHT type="image" border="0" alt="UP" src="images/RIGHT.png"/>
+
+					
+			</div>
+
+
+			<div id="IR2" class="popup">
+							<button id="fecharIR2" type="button" onclick="fecharIR2(this)"> X </button>
+							
+							<input id=onoff2 type="image" border="0" alt="onoff" src="images/OFF.png"/>
+						
+
+							<input id=CHP2 type="image" border="0" alt="UP" src="images/CH+.png"/>
+							<input id=CHN2 type="image" border="0" alt="UP" src="images/CH-.png"/>
+							<input id=VP2 type="image" border="0" alt="UP" src="images/V+.png"/>
+							<input id=VN2 type="image" border="0" alt="UP" src="images/V-.png"/>
+
+							<input id=SORCE2 type="image" border="0" alt="SORCE" src="images/SORCE.png"/>
+
+							<input id=UP2 type="image" border="0" alt="UP" src="images/UP.png"/>
+							<input id=DOWN2 type="image" border="0" alt="UP" src="images/DOWN.png"/>
+							<input id=OK2 type="image" border="0" alt="UP" src="images/OK.png"/>
+							<input id=LEFT2 type="image" border="0" alt="UP" src="images/LEFT.png"/>
+							<input id=RIGHT2 type="image" border="0" alt="UP" src="images/RIGHT.png"/>
+
+
+																							<script>
+																$(document).ready(function(){
+
+																	$("#onoff2").click(function(){
+																	    $.get("http://10.0.0.70/power", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});    
+
+																	$(document).ready(function(){
+
+																	$("#CHP2").click(function(){
+																	    $.get("http://10.0.0.70/ch+", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+
+																	$(document).ready(function(){
+
+																	$("#CHN2").click(function(){
+																	    $.get("http://10.0.0.70/ch-", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+
+																	$(document).ready(function(){
+
+																	$("#VP2").click(function(){
+																	    $.get("http://10.0.0.70/v+", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+
+																	$(document).ready(function(){
+
+																	$("#VN2").click(function(){
+																	    $.get("http://10.0.0.70/v-", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#SORCE2").click(function(){
+																	    $.get("http://10.0.0.70/sorce", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#UP2").click(function(){
+																	    $.get("http://10.0.0.70/up", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#LEFT2").click(function(){
+																	    $.get("http://10.0.0.70/left", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#RIGHT2").click(function(){
+																	    $.get("http://10.0.0.70/right", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#DOWN2").click(function(){
+																	    $.get("http://10.0.0.70/down", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	$(document).ready(function(){
+
+																	$("#OK2").click(function(){
+																	    $.get("http://10.0.0.70/ok", function(data, status){
+																	        dado = data;
+																	        console.log(dado);
+																	});
+																	});
+																	});
+																	</script>
+					
+
+
+					
+			</div>
+			<script>
+					// Ações para Eventos de POPUP da câmera e Controles Remotos
+					function popcamera(elem){
+						document.getElementById('cam').style.display = 'block';//Abre POPUP da câmera
+					}
+
+					function fecharpop(elem){
+						document.getElementById('cam').style.display = 'none';//Esconde POPUP da Câmera
+					}
+
+
+					function abrirIR1(elem){
+						document.getElementById('IR1').style.display = 'block';//Abre POPUP do controle IR da sala
+					}
+
+					function fecharIR1(elem){
+						document.getElementById('IR1').style.display = 'none';//Esconde POPUP do controle IR da sala
+					}
+
+
+					function abrirIR2(elem){
+						document.getElementById('IR2').style.display = 'block';//Abre POPUP do controle IR da suíte
+					}
+
+					function fecharIR2(elem){
+						document.getElementById('IR2').style.display = 'none';////Esconde POPUP do controle IR da suíte
+					}
+			</script>
+
+  </body>
+</html>

@@ -1,0 +1,384 @@
+@import url(http://fonts.googleapis.com/css?family=Tauri);
+/* Importa fontes */
+header { 
+	width: 101vw; /*define largura*/
+	height: 50px; /*define altura*/
+	display: flex; /* display flexível*/
+	background-color: #231100; /*Cor de fundo. Codificação RGB hexadecimal*/
+	justify-content: center; /*Centralizado*/
+	align-items: center; /*alinhamento dos items*/
+	margin-top: -10px; /* posição */
+	margin-left: 0px; /*posição*/
+}
+header h2{
+	font-family: sans-serif; /*define fonte*/
+	font-size: 40px; /*Tamanho do texto*/
+	color: #FFF; /*Cor em hexadecimal*/
+	text-align: center; /*alinhamento central*/
+}
+body {
+  margin-left: -10px; /*posição do corpo da página*/
+}
+.main{ /*toda classe main receberá esses estilos*/
+	display:block; /*renderizado como bloco*/
+    position:absolute; /*posição absoluta*/
+	width: 100vw; /*largura*/
+}
+#planta-baixa { /*A imagem da planta do apartamento*/
+    width: 50vw; 
+    background: #FFF; /*cor de fundo*/
+	display: flex; /*renderização flexivel*/
+	float: left; /*sempre a esquerda*/
+	justify-content: center; /*posição*/
+	align-items: center; /*posição*/
+}
+#planta-baixa img{
+	margin: 5% 5% 5% 5%;
+	width: 124%;
+	height: auto;
+}
+#comodos {
+	background: #FFF;
+    width: 50vw;
+	top: 10px;	
+	display: flex;
+	float: left;
+	justify-content: center;
+	align-items: center;
+}
+#comodos:hover{/*cor quando o mouse está em cima*/
+	background: #FFF;
+}
+#comodos tabela{
+	position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate3d(-50%, -50%, 0); /*ajustes para responsividade*/
+    -moz-transform:translate3d(-50%, -50%, 0); /*ajustes para responsividade*/
+    transform:translate3d(-50%, -50%, 0); /*ajustes para responsividade*/
+}
+.tabela{
+	margin: 20px 20px 20px 20px;
+	background-color: #231100;
+}
+.tabela tr{
+	padding: 32px 1px 7px 6px;
+	position:relative;
+	justify-content: center;
+	align-items: center;
+}
+.painel{
+    position:relative;
+	vertical-align: middle;
+	display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    align-content: center;
+	
+	font-family: Arial, Helvetica, sans-serif; 
+	font-weight:bold; 
+	color: #FFF;
+   	font-size:15pt;
+	background-color: #231100;
+
+}
+
+.painel img{
+	width: 100%;
+	height: 50%;
+
+}
+.painel p{
+	display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-around; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-around;
+	position: absolute;
+	top:50%;
+    left:50%;
+    -webkit-transform:translate3d(-50%, -50%, 0);
+    -moz-transform:translate3d(-50%, -50%, 0);
+    transform:translate3d(-50%, -50%, 0);
+
+}
+.painel input{
+	display:inline;
+	width: 25%;
+	height: 25%;	
+	outline: 0;
+	margin: 0% 18% 6% 5%;
+}
+.painel .switch{
+	display:inline;
+	width: 25%;
+	height: 25%;
+	outline: 0;
+}
+#cam{
+	position: fixed;
+	top: 0;bottom: 0;
+	left: 0;right: 0;
+	margin: auto;
+	width: 640px;
+	height: 480px;
+	padding: 15;
+	border: solid 3px #4c4d4f;
+	background: #FFF;
+	display: none;
+}
+#IR1{
+	position: fixed;
+	top: 0;bottom: 0;
+	left: 0;right: 0;
+	margin: auto;
+	width: 250px;
+	height: 500px;
+	padding: 15;
+	border: solid 3px #000;
+	background: #666;
+	display: none;
+}
+#fecharpop{
+	position: absolute;
+	top: 5px;
+	right: 7px;
+
+}
+#fecharIR1{
+		position: absolute;
+	top: 5px;
+	left: 215px
+
+}
+#onoff:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#UP{
+  position: absolute;
+  top: 250px;
+  left: 85px;
+}
+#UP:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#DOWN{
+  position: absolute;
+  top: 390px;
+  left: 85px;
+}
+#DOWN:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#RIGHT{
+  position: absolute;
+  top: 322px;
+  right: 10px;
+}
+#RIGHT:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#LEFT{
+  position: absolute;
+  top: 322px;
+  left: 10px;
+}
+#LEFT:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#OK{
+  position: absolute;
+  top: 322px;
+  left: 85px;
+}
+#OK:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#CHP{
+  position: absolute;
+  top: 85px;
+  right: 160px;
+}
+#CHP:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#CHN{
+  position: absolute;
+  top: 170px;
+  right: 160px;
+}
+#CHN:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#VP{
+  position: absolute;
+  top: 85px;
+  left: 160px;
+}
+#VP:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#VN{
+  position: absolute;
+  top: 170px;
+  left: 160px;
+}
+#VN:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#SORCE{
+  position: absolute;
+  top: 135px;
+  left: 90px;
+}
+#SORCE:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#IR2{
+	position: fixed;
+	top: 0;bottom: 0;
+	left: 0;right: 0;
+	margin: auto;
+	width: 250px;
+	height: 500px;
+	padding: 15;
+	border: solid 3px #000;
+	background: #666;
+	display: none;
+}
+#fecharIR2{
+		position: absolute;
+	top: 5px;
+	left: 215px
+
+}
+#onoff2:active{
+  
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#UP2{
+  position: absolute;
+  top: 250px;
+  left: 85px;
+}
+#UP2:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#DOWN2{
+  position: absolute;
+  top: 390px;
+  left: 85px;
+}
+#DOWN2:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#RIGHT2{
+  position: absolute;
+  top: 322px;
+  right: 10px;
+}
+#RIGHT2:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#LEFT2{
+  position: absolute;
+  top: 322px;
+  left: 10px;
+}
+#LEFT2:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#OK2{
+  position: absolute;
+  top: 322px;
+  left: 85px;
+}
+#OK2:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#CHP2{
+  position: absolute;
+  top: 85px;
+  right: 160px;
+}
+#CHP2:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#CHN2{
+  position: absolute;
+  top: 170px;
+  right: 160px;
+}
+#CHN2:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#VP2{
+  position: absolute;
+  top: 85px;
+  left: 160px;
+}
+#VP2:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#VN2{
+  position: absolute;
+  top: 170px;
+  left: 160px;
+}
+#VN2:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#SORCE2{
+  position: absolute;
+  top: 135px;
+  left: 90px; 
+}
+#SORCE2:active{
+	  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#container {
+    margin: 0px auto;
+    width: 500px;
+    height: 375px;
+    border: 10px #333 solid;
+}
+#videoElement {
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+}
+#texto{
+	position: absolute;
+	    text-shadow: 1px 0px 0px #000, 
+                 -1px 0px 0px #000, 
+                 0px 1px 0px #000, 
+                 0px -1px 0px #000;
+	font-size: 20pt;	
+	margin: 4% 0% 0% 35%;	
+	color: #aea69b;
+	font-weight: bold;
+    right: 200px;
+}	
+
